@@ -4,7 +4,7 @@
   "description": "Did you poop today?",
   "version": "0.0.1",
   "engines": {
-    "vscode": "^1.95.0"
+    "vscode": "^1.95.3"
   },
   "categories": [
     "Other"
@@ -13,9 +13,18 @@
   "main": "./extension.js",
   "contributes": {
     "commands": [{
-      "command": "poopycode.helloWorld",
-      "title": "Hello World"
-    }]
+      "command": "poopycode.hi",
+      "title": "Poopy Hi"
+    }],
+    "views": {
+      "explorer": [
+        {
+          "type": "webview",
+          "id": "poopySideView", 
+          "name": "Poopy Code"
+        }
+      ]
+    }
   },
   "scripts": {
     "lint": "eslint .",
