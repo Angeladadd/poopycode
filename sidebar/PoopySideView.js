@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const vscode = require('vscode');
 class PoopySideView {
   constructor(context) {
     this.context = context;
@@ -20,6 +21,19 @@ class PoopySideView {
 
     // Set the HTML content in the Webview
     webviewView.webview.html = htmlContent;
+
+    // Handle messages from the webview
+    webviewView.webview.onDidReceiveMessage(
+      (message) => {
+        switch (message.command) {
+          case 'praisePooped':
+            vscode.window.showInformationMessage(message.data);
+            return;
+        }
+      },
+      undefined,
+      this.context.subscriptions
+    );
   }
 }
 
