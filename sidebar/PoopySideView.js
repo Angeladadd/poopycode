@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const vscode = require('vscode');
+const poopCompliments = require('../constants/compliment');
 class PoopySideView {
   constructor(context) {
     this.context = context;
@@ -27,7 +28,7 @@ class PoopySideView {
       (message) => {
         switch (message.command) {
           case 'praisePooped':
-            vscode.window.showInformationMessage(message.data);
+            vscode.window.showInformationMessage(poopCompliments[Math.floor(Math.random() * poopCompliments.length)]);
             return;
         }
       },
